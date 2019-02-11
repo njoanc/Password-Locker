@@ -8,16 +8,16 @@ class TestAccount(unittest.TestCase):
     def setUp(self):
 
         self.new_account = Account(
-            "NYIRAMWIZA", "njoanc@gmail.com", "kazubajoanna12")  # create Account object
+            "NYIRAMWIZA", "Jeanne d'Arc", "njoanc@gmail.com")  # create Account object
 
     def test_init(self):
         '''
         test_init test case to test if the object is initialized properly
         '''
 
-        self.assertEqual(self.new_account.account_name, "NYIRAMWIZA")
-        self.assertEqual(self.new_account.user_name, "njoanc@gmail.com")
-        self.assertEqual(self.new_account.password, "kazubajoanna12")
+        self.assertEqual(self.new_account.f_name, "NYIRAMWIZA")
+        self.assertEqual(self.new_account.m_name, "Jeanne d'Arc")
+        self.assertEqual(self.new_account.email, "njoanc@gmail.com")
 
     def test_save_account(self):
         '''
@@ -34,7 +34,7 @@ class TestAccount(unittest.TestCase):
         '''
         self.new_account.save_contact()
         test_account = Account(
-            "Test", "test@user.com", "user")  # new contact
+            "NYIRAMWIZA", "Jeanne d'Arc", "njoanc@gmail.com")  # new contact
         test_account.save_contact()
         self.assertEqual(len(Account.account_list), 2)
 
@@ -52,7 +52,8 @@ class TestAccount(unittest.TestCase):
     objects to our account_list
         '''
         self.new_account.save_account()
-        test_account = Account("Test", "test@user.com", "user")  # new account
+        test_account = Account("NYIRAMWIZA", "Jeanne d'Arc",
+                               "njoanc@gmail.com")  # new account
         test_account.save_account()
         self.assertEqual(len(Account.account_list), 2)
 
@@ -62,7 +63,7 @@ class TestAccount(unittest.TestCase):
         '''
         self.new_account.save_account()
         test_account = Account(
-            "NYIRAMWIZA", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+            "NYIRAMWIZA", "Jeanne d'Arc", "njoanc@hotmail.com")  # new account
         test_account.save_account()
 
         self.new_account.delete_account()  # Deleting an account object
@@ -82,15 +83,15 @@ class TestAccount(unittest.TestCase):
 
         self.new_account.save_account()
         test_account = Account(
-            "NYIRAMWIZA", "njoanc@gmail.com", "kazubajoanna12")  # new account
+            "NYIRAMWIZA", "Jeanne d'Arc", "njoanc@gmail.com")  # new account
         test_account.save_account()
 
-        found_account = Account.find_by_account_name("NYIRAMWIZA")
+        found_account = Account.find_by_f_name("NYIRAMWIZA")
 
-        self.assertEqual(found_account.user_name, test_account.user_name)
+        self.assertEqual(found_account.m_name, test_account.m_name)
 
     @classmethod
-    def find_by_user_name(cls, user_name):
+    def find_by_m_name(cls, m_name):
         '''
         Method that takes in a number and returns an account that matches that username.
 
@@ -101,7 +102,7 @@ class TestAccount(unittest.TestCase):
         '''
 
         for account in cls.account_list:
-            if account.account_name == account_name:
+            if account.f_name == f_name:
                 return account
 
     def test_account_exists(self):
@@ -119,7 +120,7 @@ class TestAccount(unittest.TestCase):
         self.assertTrue(account_exists)
 
     @classmethod
-    def account_exist(cls, user_name):
+    def account_exist(cls, m_name):
         '''
         Method that checks if a account exists from the account list.
         Args:
@@ -128,7 +129,7 @@ class TestAccount(unittest.TestCase):
             Boolean: True or false depending if the account exists
         '''
         for account in cls.account_list:
-            if account.user_name == user_name:
+            if account.m_name == m_name:
                 return True
 
         return False
@@ -141,20 +142,20 @@ class TestAccount(unittest.TestCase):
         displayed = Account.display_accounts()
         self.assertEqual(displayed, Account.account_list)
 
-    def test_copy_user_name(self):
+    def test_copy_m_name(self):
         '''
         Test to confirm that we are copying the username address from a found account
         '''
 
         self.new_account.save_account()
-        Account.copy_user_name("Jeanned'Arc NYIRAMWIZA")
+        Account.copy_m_name("Jeanned'Arc")
 
-        self.assertEqual(self.new_account.user_name, pyperclip.paste())
+        self.assertEqual(self.new_account.m_name, pyperclip.paste())
 
     @classmethod
-    def copy_user_name(cls, password):
-        account_found = Account.find_by_user_name(user_name)
-        pyperclip.copy(account_found.user_name)
+    def copy_m_name(cls, password):
+        account_found = Account.find_by_m_name(m_name)
+        pyperclip.copy(account_found.m_name)
 
 
 if __name__ == '__main__':
