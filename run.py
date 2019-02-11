@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.6
 from account import Account
+from credentials import Credentials
 
 
 def create_account(acname, usname, password):
