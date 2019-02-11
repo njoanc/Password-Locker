@@ -3,11 +3,11 @@ from account import Account
 from credentials import Credentials
 
 
-def create_account(acname, usname, password):
+def create_account(account_name, user_name, password, email):
     '''
     Function to create a new account
     '''
-    new_account = Account(acname, usname, password)
+    new_account = Account(account_name, user_name, password)
     return new_account
 
 
@@ -25,18 +25,18 @@ def del_account(account):
     account.delete_account()
 
 
-def find_account(usname):
+def find_account(name):
     '''
-    Function that finds a account by username and returns the account
+    Function that finds a account by nane and returns the account
     '''
-    return Account.find_by_usname(usname)
+    return Account.find_by_account_name(account_name)
 
 
-def check_existing_accounts(usname):
+def check_existing_accounts(account_name):
     '''
-    Function that check if a account exists with that username and return a Boolean
+    Function that check if an account exists with that name and return a Boolean
     '''
-    return Account.account_exist(usname)
+    return Account.account_exist(account_name)
 
 
 def display_accounts():
@@ -45,82 +45,50 @@ def display_accounts():
     '''
     return Account.display_accounts()
 
+# credentials
 
-def copy_usname():
+
+def create_credentials(credentials_name, usr_name, password, email):
     '''
-    Function that returns all the saved usernames
+    Function to create a new account
     '''
-    return Account.copy_usnames()
+    new_credentials = Credentials(credentials_name, usr_name, password, email)
+    return new_credentials
 
 
-def main():
-    print("Hello Welcome to your account list. What is your Account name?")
-    account_name = input()
+def save_credentials(credentials):
+    '''
+    Function to save account
+    '''
+    credentials.save_credentials()
 
-    print(f"Hello {account_name}. what would you like to do?")
-    print('\n')
 
-    while True:
-        print("Use these short codes : ca - create a new account, da - display accounts, fa -find an account, ex -exit the account list ")
+def del_credentials(credentials):
+    '''
+    Function to delete a account
+    '''
+    credentials.delete_credentials()
 
-        short_code = input().lower()
 
-        if short_code == 'cc':
-            print("New Account")
-            print("-"*10)
+def find_credentials(name):
+    '''
+    Function that finds a account by nane and returns the account
+    '''
+    return Credentials.find_by_name(name)
 
-            print("Account Name ....")
-            f_name = input()
 
-            print("User Name ...")
-            l_name = input()
+def check_existing_credentials(name):
+    '''
+    Function that check if an account exists with that name and return a Boolean
+    '''
+    return Credentials.credentials_exist(name)
 
-            print("Password ...")
-            p_number = input()
 
-            # create and save new account.
-            save_accounts(create_account(ac_name, us_name, password))
-            print('\n')
-            print(f"New Account {ac_name} {us_name} created")
-            print('\n')
-
-        elif short_code == 'da':
-
-            if display_accounts():
-                print("Here is a list of all your accounts")
-                print('\n')
-
-                for account in display_accounts():
-                    print(
-                        f"{account.account_name} {account.user_name} .....{account.password}")
-
-                print('\n')
-            else:
-                print('\n')
-                print("You dont seem to have any accounts saved yet")
-                print('\n')
-
-        elif short_code == 'fa':
-
-            print("Enter the username you want to search for")
-
-            search_user_name = input()
-            if check_existing_accounts(search_user_name):
-                search_account = find_account(search_user_name)
-                print(
-                    f"{search_account.account_name} {search_account.user_name}")
-                print('-' * 20)
-
-                print(f"Account Name.......{search_account.account_name}")
-                print(f"User Name.......{search_account.user_name}")
-            else:
-                print("That account does not exist")
-
-        elif short_code == "ex":
-            print("Bye .......")
-            break
-        else:
-            print("I really didn't get that. Please use the short codes")
+def display_credentials():
+    '''
+    Function that returns all the saved accounts
+    '''
+    return Credentials.display_credentials()
 
 
 if __name__ == '__main__':
