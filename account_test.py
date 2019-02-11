@@ -60,7 +60,8 @@ class TestAccount(unittest.TestCase):
         test_delete_contact to test if we can remove a account from our account list
         '''
         self.new_account.save_account()
-        test_account = Account("Facebook", "user", "moringa123")  # new account
+        test_account = Account(
+            "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
         test_account.save_contact()
 
         self.new_account.delete_account()  # Deleting a account object
@@ -68,10 +69,24 @@ class TestAccount(unittest.TestCase):
 
     def delete_account(self):
         '''
-        delete_aqccount method deletes a saved account from the account_list
+        delete_account method deletes a saved account from the account_list
         '''
 
         Account.account_list.remove(self)
+
+    def test_find_account_by_user_name(self):
+        '''
+        test to check if we can find a account by username and display information
+        '''
+
+        self.new_account.save_account()
+        test_account = Account(
+            "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+        test_account.save_account()
+
+        found_account = Account.find_by_user_name("Jeanned'Arc NYIRAMWIZA")
+
+        self.assertEqual(found_account.account_name, test_account.account_name)
 
 
 if __name__ == '__main__':
