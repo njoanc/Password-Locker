@@ -117,6 +117,21 @@ class TestAccount(unittest.TestCase):
 
         self.assertTrue(account_exists)
 
+    @classmethod
+    def account_exist(cls, user_name):
+        '''
+        Method that checks if a account exists from the account list.
+        Args:
+            username: User name to search if it exists
+        Returns :
+            Boolean: True or false depending if the account exists
+        '''
+        for account in cls.account_list:
+            if account.user_name == user_name:
+                return True
+
+        return False
+
 
 if __name__ == '__main__':
     unittest.main()
