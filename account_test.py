@@ -62,7 +62,7 @@ class TestAccount(unittest.TestCase):
         self.new_account.save_account()
         test_account = Account(
             "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
-        test_account.save_contact()
+        test_account.save_account()
 
         self.new_account.delete_account()  # Deleting a account object
         self.assertEqual(len(Account.account_list), 1)
@@ -87,6 +87,21 @@ class TestAccount(unittest.TestCase):
         found_account = Account.find_by_user_name("Jeanned'Arc NYIRAMWIZA")
 
         self.assertEqual(found_account.account_name, test_account.account_name)
+
+    @classmethod
+    def find_by_user_name(cls, user_name):
+        '''
+        Method that takes in a number and returns an account that matches that username.
+
+        Args:
+            username: username to search for
+        Returns :
+            Account of person that matches the username.
+        '''
+
+        for account in cls.account_list:
+            if account.account_name == account_name:
+                return account
 
 
 if __name__ == '__main__':
