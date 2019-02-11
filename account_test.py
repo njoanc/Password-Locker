@@ -55,6 +55,17 @@ class TestAccount(unittest.TestCase):
         test_account.save_account()
         self.assertEqual(len(Account.account_list), 2)
 
+    def test_delete_account(self):
+        '''
+        test_delete_contact to test if we can remove a account from our account list
+        '''
+        self.new_account.save_account()
+        test_account = Account("Facebook", "user", "moringa123")  # new account
+        test_account.save_contact()
+
+        self.new_account.delete_account()  # Deleting a account object
+        self.assertEqual(len(Account.account_list), 1)
+
 
 if __name__ == '__main__':
     unittest.main()
