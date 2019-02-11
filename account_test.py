@@ -64,7 +64,7 @@ class TestAccount(unittest.TestCase):
             "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
         test_account.save_account()
 
-        self.new_account.delete_account()  # Deleting a account object
+        self.new_account.delete_account()  # Deleting an account object
         self.assertEqual(len(Account.account_list), 1)
 
     def delete_account(self):
@@ -102,6 +102,20 @@ class TestAccount(unittest.TestCase):
         for account in cls.account_list:
             if account.account_name == account_name:
                 return account
+
+    def test_account_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the account.
+        '''
+
+        self.new_account.save_account()
+        test_account = Account(
+            "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+        test_account.save_account()
+
+        account_exists = Account.account_exist("Jeanned'Arc NYIRAMWIZA")
+
+        self.assertTrue(account_exists)
 
 
 if __name__ == '__main__':
