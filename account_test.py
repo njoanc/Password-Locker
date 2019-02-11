@@ -4,9 +4,7 @@ from account import Account  # Importing the account class
 
 class TestAccount(unittest.TestCase):
 
-    '''
-    Test class that defines test cases for the account class behaviours.
+    def setUp(self):
 
-    Args:
-        unittest.TestCase: TestCase class that helps in creating test cases
-    '''
+        self.new_account = Account(
+            "GitHub", "njoanc", "kazubajoanna12")  # create Account object
