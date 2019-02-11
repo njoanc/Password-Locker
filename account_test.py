@@ -1,3 +1,4 @@
+import pyperclip
 import unittest  # Importing the unittest module
 from account import Account  # Importing the account class
 
@@ -7,15 +8,15 @@ class TestAccount(unittest.TestCase):
     def setUp(self):
 
         self.new_account = Account(
-            "GitHub", "njoanc", "kazubajoanna12")  # create Account object
+            "NYIRAMWIZA", "njoanc@gmail.com", "kazubajoanna12")  # create Account object
 
     def test_init(self):
         '''
         test_init test case to test if the object is initialized properly
         '''
 
-        self.assertEqual(self.new_account.account_name, "GitHub")
-        self.assertEqual(self.new_account.user_name, "njoanc")
+        self.assertEqual(self.new_account.account_name, "NYIRAMWIZA")
+        self.assertEqual(self.new_account.user_name, "njoanc@gmail.com")
         self.assertEqual(self.new_account.password, "kazubajoanna12")
 
     def test_save_account(self):
@@ -33,7 +34,7 @@ class TestAccount(unittest.TestCase):
         '''
         self.new_account.save_contact()
         test_account = Account(
-            "Test", "user", "test@user.com")  # new contact
+            "Test", "test@user.com", "user")  # new contact
         test_account.save_contact()
         self.assertEqual(len(Account.account_list), 2)
 
@@ -51,7 +52,7 @@ class TestAccount(unittest.TestCase):
     objects to our account_list
         '''
         self.new_account.save_account()
-        test_account = Account("Facebook", "user", "moringa123")  # new account
+        test_account = Account("Test", "test@user.com", "user")  # new account
         test_account.save_account()
         self.assertEqual(len(Account.account_list), 2)
 
@@ -61,7 +62,7 @@ class TestAccount(unittest.TestCase):
         '''
         self.new_account.save_account()
         test_account = Account(
-            "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+            "NYIRAMWIZA", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
         test_account.save_account()
 
         self.new_account.delete_account()  # Deleting an account object
@@ -81,7 +82,7 @@ class TestAccount(unittest.TestCase):
 
         self.new_account.save_account()
         test_account = Account(
-            "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+            "NYIRAMWIZA", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
         test_account.save_account()
 
         found_account = Account.find_by_user_name("Jeanned'Arc NYIRAMWIZA")
@@ -110,7 +111,7 @@ class TestAccount(unittest.TestCase):
 
         self.new_account.save_account()
         test_account = Account(
-            "Facebook", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+            "NYIRAMWIZA", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
         test_account.save_account()
 
         account_exists = Account.account_exist("Jeanned'Arc NYIRAMWIZA")
@@ -138,6 +139,21 @@ class TestAccount(unittest.TestCase):
         '''
 
         self.assertEqual(Account.display_accounts(), Account.account_list)
+
+    def test_copy_user_name(self):
+        '''
+        Test to confirm that we are copying the username address from a found account
+        '''
+
+        self.new_account.save_account()
+        Account.copy_user_name("Jeanned'Arc NYIRAMWIZA")
+
+        self.assertEqual(self.new_account.user_name, pyperclip.paste())
+
+    @classmethod
+    def copy_user_name(cls, password):
+        account_found = Account.find_by_user_name(user_name)
+        pyperclip.copy(account_found.user_name)
 
 
 if __name__ == '__main__':
