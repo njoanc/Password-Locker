@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.6
-from contact import Contact
+from account import Account
 
 
 def create_account(acname, usname, password):
@@ -120,3 +120,8 @@ def main():
             break
         else:
             print("I really didn't get that. Please use the short codes")
+
+
+if __name__ == '__main__':
+
+    main()
