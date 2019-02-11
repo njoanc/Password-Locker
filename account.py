@@ -2,13 +2,8 @@
 class Account:
 
     """
-
-
     Class that generates new instances of users.
-
-
     """
-
     account_list = []  # empty account list
 
     def __init__(self, account_name, user_name, password):
@@ -20,7 +15,6 @@ class Account:
         '''
         save_account method saves account objects into account_list
         '''
-
         Account.account_list.append(self)
 
     @classmethod
@@ -34,7 +28,6 @@ class Account:
         '''
         delete_account method deletes a saved account from the account_list
         '''
-
         Account.account_list.remove(self)
 
     @classmethod

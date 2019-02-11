@@ -1,62 +1,27 @@
 
-class Credentials:
+class Credential:
 
-    """
+    Credential_list = []
 
+    def __init__(self, face_bookp, email_p):
+        self.face_bookp = face_bookp
+        self.email_p = email_p
 
-    Class that generates new instances of users.
-
-
-    """
-
-    credentials_list = []  # empty credentials list
-
-    def __init__(self, credentials_name, usr_name, password, email):
-
-        self.credentials_name = credentials_name
-
-        self.usr_name = usr_name
-
-        self.password = password
-
-    def save_credentials(self):
+    def save_Credential(self):
         '''
-        save_credentials method saves credentials objects into credentials_list
+        Function created to save credentials
         '''
+        Credential.credential_list.append(self)
 
-        Credentials.credentials_list.append(self)
-
-    def delete_credentials(self):
+    def delete_credential(self):
         '''
-        delete_credentials method deletes a saved credentials from the credentials_list
+        Function added to delete credentials
         '''
-
-        Credentials.credentials_list.remove(self)
+        Credential.info_list.remove(self)
 
     @classmethod
-    def find_by_name(cls, name):
-        for credentials in cls.credentials_list:
-            if credentials.credentials_name == name:
-                return credentials
-
-    @classmethod
-    def credentials_exist(cls, name):
+    def display_credential(cls):
         '''
-        Method that checks if a credentials exists from the credentials list.
-        Args:
-            name: Acc name to search if it exists
-        Returns :
-            Boolean: True or false depending if the credentials exists
+        a class method involves the whole class the display credential display user information
         '''
-        for credentials in cls.credentials_list:
-            if credentials.password == name:
-                return credentials
-
-        return False
-
-    @classmethod
-    def display_credentials(cls):  # check this line later
-        '''
-        method that returns the credentials list
-        '''
-        return cls.credentials_list
+        return cls.credential_list
