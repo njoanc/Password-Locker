@@ -75,19 +75,19 @@ class TestAccount(unittest.TestCase):
 
         Account.account_list.remove(self)
 
-    def test_find_account_by_user_name(self):
+    def test_find_account_by_account_name(self):
         '''
         test to check if we can find a account by username and display information
         '''
 
         self.new_account.save_account()
         test_account = Account(
-            "NYIRAMWIZA", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+            "NYIRAMWIZA", "njoanc@gmail.com", "kazubajoanna12")  # new account
         test_account.save_account()
 
-        found_account = Account.find_by_user_name("Jeanned'Arc NYIRAMWIZA")
+        found_account = Account.find_by_account_name("NYIRAMWIZA")
 
-        self.assertEqual(found_account.account_name, test_account.account_name)
+        self.assertEqual(found_account.user_name, test_account.user_name)
 
     @classmethod
     def find_by_user_name(cls, user_name):
@@ -111,10 +111,10 @@ class TestAccount(unittest.TestCase):
 
         self.new_account.save_account()
         test_account = Account(
-            "NYIRAMWIZA", "Jeanned'Arc NYIRAMWIZA", "kazubajoanna12")  # new account
+            "NYIRAMWIZA", "njoanc@gmail.com", "kazubajoanna12")  # new account
         test_account.save_account()
 
-        account_exists = Account.account_exist("Jeanned'Arc NYIRAMWIZA")
+        account_exists = Account.account_exist("njoanc@gmail.com")
 
         self.assertTrue(account_exists)
 
@@ -138,7 +138,8 @@ class TestAccount(unittest.TestCase):
         method that returns a list of all accounts saved
         '''
 
-        self.assertEqual(Account.display_accounts(), Account.account_list)
+        displayed = Account.display_accounts()
+        self.assertEqual(displayed, Account.account_list)
 
     def test_copy_user_name(self):
         '''
