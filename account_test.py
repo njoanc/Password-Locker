@@ -66,6 +66,13 @@ class TestAccount(unittest.TestCase):
         self.new_account.delete_account()  # Deleting a account object
         self.assertEqual(len(Account.account_list), 1)
 
+    def delete_account(self):
+        '''
+        delete_aqccount method deletes a saved account from the account_list
+        '''
+
+        Account.account_list.remove(self)
+
 
 if __name__ == '__main__':
     unittest.main()
