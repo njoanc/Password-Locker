@@ -22,3 +22,10 @@ class Account:
         '''
 
         Account.account_list.append(self)
+
+    @classmethod
+    def display_accounts(cls):
+        '''
+        method that returns the account list
+        '''
+        return cls.account_list
