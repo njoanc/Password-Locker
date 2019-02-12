@@ -1,165 +1,154 @@
+
+import unittest
+from user_credentials import User, Credential
 import pyperclip
+import random
+import string
 
-import unittest  # Importing the unittest module
-from account import Account  # Importing the account class
+# Global Variables
+
+global users_list
 
 
-class TestAccount(unittest.TestCase):
+class User:
+
+    '''
+    Class to create user accounts and save their information
+    '''
+    # Class Variables
+
+
+class TestUser(unittest.TestCase):
+
+    '''
+    Test class that defines test cases for the user class behaviours.
+    Args:
+        unittest.TestCase: helps in creating test cases
+    '''
 
     def setUp(self):
+        '''
+        Function to create a user account before each test
+        '''
+        self.new_user = User('Alice', 'MUHIRE,'kigali12')
 
-        self.new_account = Account("Hotmail", "NYIRAMWIZA", "njoanc@hotmail.com",
-                                   "kazubajoanna12" "njoanc@hotmail.com")  # create Account object
+    def test__init__(self):
+        '''
+        Test to if check the initialization/creation of user instances is properly done
+        '''
+        self.assertEqual(self.new_user.first_name, 'Alice')
 
-    def test_init(self):
-        '''
-        test_init test case to test if the object is initialized properly
-        '''
+        self.assertEqual(self.new_user.last_name, 'MUHIRE')
 
-        self.assertEqual(self.new_account.account_name, "Hotmail")
-        self.assertEqual(self.new_account.m_name, "NYIRAMWIZA")
-        self.assertEqual(self.new_account.user_name, "njoanc@hotmail.com")
-        self.assertEqual(self.new_account.password, "kazubajoanna12")
-        self.assertEqual(self.new_account.email, "njoanc@hotmail.com")
+        self.assertEqual(self.new_user.password, 'kigali12')
 
-    def test_save_account(self):
+    def test_save_user(self):
         '''
-        test_save_account test case to test if the account object is saved into
-         the account list
+        Test to check if the new users info is saved into the users list
         '''
-        self.new_account.save_account()  # saving the new account
-        self.assertEqual(len(Account.account_list), 1)
+        self.new_user.save_user()
 
-    def test_save_multiple_account(self):
+        self.assertEqual(len(User.users_list), 1)
+
+
+class TestCredentials(unittest.TestCase):
+    '''
+    Test class that defines test cases for the credentials class behaviours.
+
+
+    Args:
+        unittest.TestCase: helps in creating test cases
+    '''
+
+    def test_check_user(self):
         '''
-        test_save_multiple_account to check if we can save multiple contact
-        objects to ouraccount_list
+        Function to test whether the login in function check_user works as expected
         '''
-        self.new_account.save_contact()
-        test_account = Account(
-            "Hotmail", "NYIRAMWIZA", "njoanc@hotmail.com", "kazubajoanna12" "njoanc@hotmail.com")  # new contact
-        test_account.save_contact()
-        self.assertEqual(len(Account.account_list), 2)
+        self.new_user = User('Alice', 'MUHIRE', 'kigali12')
+        self.new_user.save_user()
+        user2 = User('Amani', 'MUTONI'kigali11')
+        user2.save_user()
+
+        for user in User.users_list:
+            if user.first_name == user2.first_name and user.password == user2.password:
+                current_user = user.first_name
+        return current_user
+
+        self.assertEqual(current_user, Credential.check_user(
+            user2.password, user2.first_name))
+
+    def setUp(self):
+        '''
+        Function to create an account's credentials before each test
+        '''
+        self.new_credential = Credential(
+            'Alice', 'Gmail', 'alice@gmail.com', 'kigali12')
+
+    def test__init__(self):
+        '''
+        Test to if check the initialization/creation of credential instances is properly done
+        '''
+        self.assertEqual(self.new_credential.user_name, 'Alice')
+        self.assertEqual(self.new_credential.site_name, 'Gmail')
+        self.assertEqual(self.new_credential.account_name, 'alice@gmail.com')
+        self.assertEqual(self.new_credential.password, 'kigali12')
+
+    def test_save_credentials(self):
+        '''
+        Test to check if the new credential info is saved into the credentials list
+
+        '''
+        self.new_credential.save_credentials()
+        twitter = Credential('Kamanzi', 'Twitter', 'kamanzi', 'kamanzi1')
+        twitter.save_credentials()
+        self.assertEqual(len(Credential.credentials_list), 2)
 
     def tearDown(self):
         '''
-        tearDown method that does clean up after each test case has run.
+        Function to clear the credentials list after every test
         '''
-        Account.account_list = []
+        Credential.credentials_list = []
+        User.users_list = []
 
-# other test cases here
-
-    def test_save_multiple_account(self):
+    def test_display_credentials(self):
         '''
-    test_save_multiple_account to check if we can save multiple account
-    objects to our account_list
+        Test to check if the display_credentials method, displays the correct credentials.
         '''
-        self.new_account.save_account()
-        test_account = Account("Hotmail", "NYIRAMWIZA", "njoanc@hotmail.com",
-                               "kazubajoanna12" "njoanc@hotmail.com")  # new account
-        test_account.save_account()
-        self.assertEqual(len(Account.account_list), 2)
+        self.new_credential.save_credentials()
+        twitter = Credential('Kamanzi', 'Twitter', 'kamanzi', 'kamanzi1')
+        twitter.save_credentials()
+        gmail = Credential('Alice', 'Gmail', 'alice@gmail.com', 'kigali12')
+        gmail.save_credentials()
+        self.assertEqual(
+            len(Credential.display_credentials(twitter.user_name)), 2)
 
-    def test_delete_account(self):
+    def test_find_by_site_name(self):
         '''
-        test_delete_contact to test if we can remove a account from our account list
+        Test to check if the find_by_site_name method returns the correct credential
         '''
-        self.new_account.save_account()
-        test_account = Account(
-            "Hotmail", "NYIRAMWIZA", "njoanc@hotmail.com", "kazubajoanna12" "njoanc@hotmail.com")  # new account
-        test_account.save_account()
+        self.new_credential.save_credentials()
+        twitter = Credential('Kamanzi', 'Twitter', 'kamanzi', 'kamanzi1')
+        twitter.save_credentials()
+        credential_exists = Credential.find_by_site_name('Twitter')
+        self.assertEqual(credential_exists, twitter)
 
-        self.new_account.delete_account()  # Deleting an account object
-        self.assertEqual(len(Account.account_list), 1)
-
-    def delete_account(self):
+    def test_copy_credential(self):
         '''
-        delete_account method deletes a saved account from the account_list
+        Test to check if the copy a credential method copies the correct credential
+
         '''
-
-        Account.account_list.remove(self)
-
-    def test_find_account_by_account_name(self):
-        '''
-        test to check if we can find a account by username and display information
-        '''
-
-        self.new_account.save_account()
-        test_account = Account("Hotmail", "NYIRAMWIZA", "njoanc@hotmail.com",
-                               "kazubajoanna12" "njoanc@hotmail.com")  # new account
-        test_account.save_account()
-
-        found_account = Account.find_by_account_name("Hotmail")
-
-        self.assertEqual(found_account.m_name, test_account.m_name)
-
-    @classmethod
-    def find_by_m_name(cls, m_name):
-        '''
-        Method that takes in a number and returns an account that matches that username.
-
-        Args:
-            username: username to search for
-        Returns :
-            Account of person that matches the username.
-        '''
-
-        for account in cls.account_list:
-            if account.account_name == account_name:
-                return account
-
-    def test_account_exists(self):
-        '''
-        test to check if we can return a Boolean  if we cannot find the account.
-        '''
-
-        self.new_account.save_account()
-        test_account = Account(
-            "Gmail", "NYIRAMWIZA", "njoanc@gmail.com", "kazubajoanna12", "njoanc@gmail.com")  # new account
-        test_account.save_account()
-
-        account_exists = Account.account_exist("njoanc@gmail.com")
-
-        self.assertTrue(account_exists)
-
-    @classmethod
-    def account_exist(cls, m_name):
-        '''
-        Method that checks if a account exists from the account list.
-        Args:
-            username: User name to search if it exists
-        Returns :
-            Boolean: True or false depending if the account exists
-        '''
-        for account in cls.account_list:
-            if account.m_name == m_name:
-                return True
-
-        return False
-
-    def test_display_all_accounts(self):
-        '''
-        method that returns a list of all accounts saved
-        '''
-
-        displayed = Account.display_accounts()
-        self.assertEqual(displayed, Account.account_list)
-
-    def test_copy_e_mail(self):
-        '''
-        Test to confirm that we are copying the email address from a found account
-        '''
-
-        self.new_account.save_account()
-        Account.copy_e_mail("njoanc@gmail.com")
-
-        self.assertEqual(self.new_account.e_mail, pyperclip.paste())
-
-    @classmethod
-    def copy_e_mail(cls, m_name):
-        account_found = Account.find_by_m_name(m_name)
-        pyperclip.copy(account_found.e_mail)
+        self.new_credential.save_credentials()
+        twitter = Credential('Kamanzi', 'Twitter', 'kamanzi', 'kamanzi1')
+        twitter.save_credentials()
+        find_credential = None
+        for credential in Credential.user_credentials_list:
+            find_credential = Credential.find_by_site_name(
+                credential.site_name)
+            return pyperclip.copy(find_credential.password)
+        Credential.copy_credential(self.new_credential.site_name)
+        self.assertEqual('kamanzi1', pyperclip.paste())
+        print(pyperclip.paste())
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)
