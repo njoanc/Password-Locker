@@ -1,7 +1,8 @@
 
 #! /usr/bin/env python3
 import pyperclip
-from credentials import User, Credential
+from credentials import User
+from credentials import Credential
 
 
 def create_user(fname, lname, password):
@@ -9,6 +10,7 @@ def create_user(fname, lname, password):
     Function to create a new user account
     '''
     new_user = User(fname, lname, password)
+    new_user.save_user()
     return new_user
 
 
@@ -16,7 +18,6 @@ def save_user(user):
     '''
     Function to save a new user account
     '''
-    User.save_user(user)
 
 
 def verify_user(first_name, password):
@@ -86,7 +87,7 @@ def main():
             first_name = input('Enter your first name - ').strip()
             last_name = input('Enter your last name - ').strip()
             password = input('Enter your password - ').strip()
-            save_user(create_user(first_name, last_name, password))
+            create_user(first_name, last_name, password)
             print(" ")
             print(
                 f'New Account Created for: {first_name} {last_name} using password: {password}')

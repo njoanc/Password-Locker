@@ -1,8 +1,15 @@
-# global users_list
+import pyperclip
+import random
+import string
+
+global users_list
+
+
+class User:
 
     users_list = []
 
-   def __init__(self, first_name, last_name, password):
+    def __init__(self, first_name, last_name, password):
         '''
         Method to define the properties for each user object will hold.
         '''
@@ -40,8 +47,7 @@ class Credential:
 
                 return current_user
 
-
-        def __init__(self, user_name, site_name,account_name,password):
+        def __init__(self, user_name, site_name, account_name, password):
             '''
             Method to define the properties for each user object will hold.
             '''
