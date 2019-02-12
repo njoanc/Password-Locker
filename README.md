@@ -41,3 +41,4 @@ To run the tests for the class file and check if it functions well:
 # Technologies Used
 Python3.6
 # License
+Copyright@jehanne2019
