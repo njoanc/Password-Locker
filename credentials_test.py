@@ -44,7 +44,7 @@ class TestCredentials(unittest.TestCase):
         '''
         Function to test whether the login in function check_user works as expected
         '''
-        self.new_user = User('Jeanne \'Arc', 'NYIRAMWIZA', 'amahoro1')
+        self.new_user = User('Jeanne d\'Arc', 'NYIRAMWIZA', 'amahoro1')
         self.new_user.save_user()
         user2 = User('Kennedy', 'MUVARA', 'ejo12345')
         user2.save_user()
