@@ -75,7 +75,7 @@ def main():
         print(' ')
         print("-"*100)
         print(
-            'Use these codes to navigate: \n ca-Create an Account \n da-Display your\n li-Log In \n ex-Exit')
+            'Use these codes to navigate: \n ca-Create an Account \n li-Log In \n ex-Exit')
         short_code = input('Enter a choice: ').lower().strip()
         if short_code == 'ex':
             break
