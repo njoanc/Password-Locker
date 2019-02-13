@@ -19,7 +19,7 @@ These are the behaviours that the application implements for use by a user.
 |---------------------------------------|------------------------------------ |-------------------------------------------
 *Display prompt for login               | * Enter: LN                         |  * Enter your account password
 |---------------------------------------|-------------------------------------|---------------------------------------------
-* Once logged in                        |You are now logged in to your account|Use these short codes:CA -> Create new                                                                                       | credential.DC -> Display your credentials                                                                                   |   list. ex ->Log out your creden
+| Once logged in                        |You are now logged in to your account|Use these short codes:CA -> Create new         |                                       |                                     | credential.DC -> Display your credentials   |                                         |                                     |   list. ex ->Log out your creden
 |---------------------------------------|------------------------------------ |---------------------------------------------
 * Display prompt for creating a creden  |  * Enter: CA                        |   * Create new credential, Credential name
 |---------------------------------------|------------------------------------ |---------------------------------------------
