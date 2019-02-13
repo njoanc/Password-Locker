@@ -11,10 +11,10 @@ These are the behaviours that the application implements for use by a user.
 * Generate a password for a new credential/account
 
 # Specifications
-## Behaviour                            |  Input                              | Output
-|---------------------------------------|------------------------------------ |---------------------------------------------
+## Behaviour--------------------------  |  Input  ------------------------    | Output
+| ------------------------------------- | ----------------------------------- | --------------------------------------------
 * Display guides for navigation         | * In terminal: $./run.py            |  * Hello Welcome to your Pass Word                                                   |                                     |  Locker.What is your name? (once you enter                                           |                                     |     your nname):Use these known short codes                                           |                                     |     to operate 
-|---------------------------------------|------------------------------------ |------------------------------------
+| ------------------------------------- | ----------------------------------- | -----------------------------------
 * Display prompt for creating an account|* Enter:SU                           | * Enter account name, user name 
 |---------------------------------------|------------------------------------ |-------------------------------------------
 *Display prompt for login               | * Enter: LN                         |  * Enter your account password
