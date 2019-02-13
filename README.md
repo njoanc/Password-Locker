@@ -30,7 +30,7 @@ For windows users: GitBash
 For linux/ubuntu users : Git
 # Cloning
 In your terminal:
-  $ git clone https://github.com/njoanc/Password-Locker.git
+  $ git clone https://github.com/njoanc/Password-Locker.git, https://njoanc.github.io/Password-Locker/.
   $ cd Python-Password-Locker
 # Running the Application
 To run the application, in your terminal:
