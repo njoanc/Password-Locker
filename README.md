@@ -11,22 +11,22 @@ These are the behaviours that the application implements for use by a user.
 * Generate a password for a new credential/account
 
 # Specifications
-## Behaviour                             |  Input                              | Output
-----------------------------------------|-------------------------------------|---------------------------------------------
+## Behaviour                            |  Input                              | Output
+|---------------------------------------|------------------------------------ |---------------------------------------------
 * Display guides for navigation         | * In terminal: $./run.py            |  * Hello Welcome to your Pass Word                                                   |                                     |  Locker.What is your name? (once you enter                                           |                                     |     your nname):Use these known short codes                                           |                                     |     to operate 
--------------------------------------------------------------------------------------------------------------------------
+|---------------------------------------|------------------------------------ |------------------------------------
 * Display prompt for creating an account|* Enter:SU                           | * Enter account name, user name 
----------------------------------------------------------------------------------------------------------------------------
-*Display prompt for login               | * Enter: LN                          |  * Enter your account password
------------------------------------------------------------------------------------------------------------------------------
-* Once logged in                        |You are now logged in to your account |Use these short codes:CA -> Create new                                                                                      | credential.DC -> Display your credentials                                                                                  |   list. ex ->Log out your creden
------------------------------------------------------------------------------------------------------------------------------
-* Display prompt for creating a creden   |  * Enter: CA                        |   * Create new credential, Credential name
------------------------------------------------------------------------------------------------------------------------------
-* Display a list of credenti             | * Enter: DC                         |   * Prints a list of saved credentials
------------------------------------------------------------------------------------------------------------------------------
-* Log out account                        |  * Enter: exit                       |   * You have logged out your account
------------------------------------------------------------------------------------------------------------------------------
+|---------------------------------------|------------------------------------ |-------------------------------------------
+*Display prompt for login               | * Enter: LN                         |  * Enter your account password
+|---------------------------------------|-------------------------------------|---------------------------------------------
+* Once logged in                        |You are now logged in to your account|Use these short codes:CA -> Create new                                                                                       | credential.DC -> Display your credentials                                                                                   |   list. ex ->Log out your creden
+|---------------------------------------|------------------------------------ |---------------------------------------------
+* Display prompt for creating a creden  |  * Enter: CA                        |   * Create new credential, Credential name
+|---------------------------------------|------------------------------------ |---------------------------------------------
+* Display a list of credenti            | * Enter: DC                         |   * Prints a list of saved credentials
+|---------------------------------------|------------------------------------ |----------------------------------------------
+* Log out account                       |  * Enter: exit                      |   * You have logged out your account
+|---------------------------------------|------------------------------------ |----------------------------------------------
 
 ### To completely interact with this application,you will need to sign up to have an account,then login to your account and work
 
