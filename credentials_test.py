@@ -15,13 +15,13 @@ class TestUser(unittest.TestCase):
         '''
         Function to create a user account before each test
         '''
-        self.new_user = User('Jeanne \'Arc', 'NYIRAMWIZA,'amahoro1')
+        self.new_user = User('Jeanne','NYIRAMWIZA','amahoro1')
 
     def test__init__(self):
         '''
         Test to if check the initialization/creation of user instances is properly done
         '''
-        self.assertEqual(self.new_user.first_name, 'Jeanne \'Arc')
+        self.assertEqual(self.new_user.first_name, 'Jeanne')
         self.assertEqual(self.new_user.last_name, 'NYIRAMWIZA')
         self.assertEqual(self.new_user.password, 'amahoro1')
 
@@ -44,7 +44,7 @@ class TestCredentials(unittest.TestCase):
         '''
         Function to test whether the login in function check_user works as expected
         '''
-        self.new_user = User('Jeanne d\'Arc', 'NYIRAMWIZA', 'amahoro1')
+        self.new_user = User('Jeanne','NYIRAMWIZA','amahoro1')
         self.new_user.save_user()
         user2 = User('Kennedy', 'MUVARA', 'ejo12345')
         user2.save_user()
@@ -62,13 +62,13 @@ class TestCredentials(unittest.TestCase):
         Function to create an account's credentials before each test
         '''
         self.new_credential = Credential(
-            'Jeanne \'Arc', 'Facebook', 'jehanned', 'amahoro1')
+            'Jeanne', 'Facebook', 'jehanned', 'amahoro1')
 
     def test__init__(self):
         '''
         Test to if check the initialization/creation of credential instances is properly done
         '''
-        self.assertEqual(self.new_credential.user_name, 'Jeanne \'Arc')
+        self.assertEqual(self.new_credential.user_name, 'Jeanne')
         self.assertEqual(self.new_credential.site_name, 'Facebook')
         self.assertEqual(self.new_credential.account_name, 'jehanned')
         self.assertEqual(self.new_credential.password, 'amahoro1')
