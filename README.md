@@ -51,8 +51,8 @@ To run the tests for the class file and check if it functions well:
 # Technologies Used
 Python3.6
 # Contacts details
-Email: njoanc@gmail.com
-Phone Number: +250783451689
+* Email: njoanc@gmail.com
+* Phone Number: +250783451689
 
 # License
 Copyright@jehanne2019
