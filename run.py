@@ -18,7 +18,7 @@ def save_user(user):
     '''
     Function to save a new user account
     '''
-
+    User.save_user(user)
 
 def verify_user(first_name, password):
     '''
