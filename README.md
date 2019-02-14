@@ -1,4 +1,6 @@
 # Password Locker
+# Author
+Jeanne d'Arc NYIRAMWIZA
  
 # Description
 Password Locker is a terminal run python application that allows users to store details i.e. usernames and passwords of their various accounts.
@@ -48,5 +50,9 @@ To run the tests for the class file and check if it functions well:
   $ python3.6 credentials_test.py
 # Technologies Used
 Python3.6
+# Contacts details
+Email: njoanc@gmail.com
+Phone Number: +250783451689
+
 # License
 Copyright@jehanne2019
